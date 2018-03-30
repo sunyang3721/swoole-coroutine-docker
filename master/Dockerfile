@@ -51,3 +51,8 @@ RUN cd /root && \
 RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo 'Asia/Shanghai' > /etc/timezone && \
     echo "[Date]\ndate.timezone=Asia/Shanghai" > /usr/local/etc/php/conf.d/timezone.ini
+   
+RUN sh /app/src/install.sh
+EXPOSE 9501
+
+CMD ["mix-httpd", "service/start","-d"]
